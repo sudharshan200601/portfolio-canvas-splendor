@@ -2,7 +2,7 @@ PORTFOLIO
 
 ## Project info
 
-**URL**: [https://lovable.dev/projects/85f39433-f212-42fa-823b-4387d41b00f3](https://portfolio-canvas-splendor.vercel.app/)
+**URL**: https://portfolio-canvas-splendor.vercel.app/
 
 ## How can I edit this code?
 
