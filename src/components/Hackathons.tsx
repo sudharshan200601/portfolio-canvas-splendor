@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Trophy, Zap } from "lucide-react";
 import hackathon1 from "@/assets/hackathon-1.jpg";
 import hackathon2 from "@/assets/hackathon-2.jpg";
 
 const Hackathons = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
   const achievements = [
     {
       title: "Hybrid Hack 2025",
@@ -53,7 +57,10 @@ const Hackathons = () => {
               }`}
             >
               {achievement.image && (
-                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-accent/5 to-secondary/5">
+                <div 
+                  className="relative h-48 overflow-hidden bg-gradient-to-br from-accent/5 to-secondary/5 cursor-pointer"
+                  onClick={() => setSelectedImage(achievement.image || null)}
+                >
                   <img 
                     src={achievement.image} 
                     alt={achievement.title}
@@ -100,6 +107,18 @@ const Hackathons = () => {
           ))}
         </div>
       </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl">
+          {selectedImage && (
+            <img 
+              src={selectedImage} 
+              alt="Full size achievement" 
+              className="w-full h-auto rounded-lg"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

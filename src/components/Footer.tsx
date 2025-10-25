@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
@@ -51,15 +51,7 @@ const Footer = () => {
                   <Linkedin className="h-4 w-4" />
                 </a>
               </Button>
-              <Button variant="outline" size="icon" asChild>
-                <a href="mailto:ss5630@srmist.edu.in">
-                  <Mail className="h-4 w-4" />
-                </a>
-              </Button>
             </div>
-            <p className="text-sm text-muted-foreground">
-              ss5630@srmist.edu.in
-            </p>
             <p className="text-sm text-muted-foreground">
               RA2411003010290
             </p>

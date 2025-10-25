@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ExternalLink } from "lucide-react";
 import unifix1 from "@/assets/unifix-1.jpg";
 import unifix2 from "@/assets/unifix-2.jpg";
 import unifix3 from "@/assets/unifix-3.jpg";
 
 const Projects = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
   const projects = [
     {
       title: "UniFix",
@@ -64,7 +68,11 @@ const Projects = () => {
                 {project.images && (
                   <div className="grid grid-cols-3 gap-2">
                     {project.images.map((img, i) => (
-                      <div key={i} className="aspect-square rounded-lg overflow-hidden border border-border">
+                      <div 
+                        key={i} 
+                        className="aspect-square rounded-lg overflow-hidden border border-border cursor-pointer"
+                        onClick={() => setSelectedImage(img)}
+                      >
                         <img 
                           src={img} 
                           alt={`${project.title} screenshot ${i + 1}`}
@@ -106,6 +114,18 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl">
+          {selectedImage && (
+            <img 
+              src={selectedImage} 
+              alt="Full size preview" 
+              className="w-full h-auto rounded-lg"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

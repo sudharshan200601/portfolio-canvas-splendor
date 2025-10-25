@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ExternalLink, Award } from "lucide-react";
 import certIbm from "@/assets/cert-ibm.jpg";
 import certAws from "@/assets/cert-aws.jpg";
@@ -8,6 +10,8 @@ import certNptel from "@/assets/cert-nptel.jpg";
 import nptelJava from "@/assets/nptel-java.jpg";
 
 const Certificates = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
   const certificates = [
     {
       title: "Introduction to Cloud Computing",
@@ -66,7 +70,10 @@ const Certificates = () => {
               key={index} 
               className="group overflow-hidden transition-smooth hover:shadow-glow border-2 hover:border-primary/50"
             >
-              <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5">
+              <div 
+                className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 cursor-pointer"
+                onClick={() => setSelectedImage(cert.image)}
+              >
                 <img 
                   src={cert.image} 
                   alt={cert.title}
@@ -130,6 +137,18 @@ const Certificates = () => {
           ))}
         </div>
       </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl">
+          {selectedImage && (
+            <img 
+              src={selectedImage} 
+              alt="Full size certificate" 
+              className="w-full h-auto rounded-lg"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

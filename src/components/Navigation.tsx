@@ -53,12 +53,6 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="gradient" size="sm" asChild>
-              <a href="mailto:ss5630@srmist.edu.in">Contact Me</a>
-            </Button>
-          </div>
 
           {/* Mobile Menu Button */}
           <Button
@@ -85,11 +79,6 @@ const Navigation = () => {
                   {link.label}
                 </a>
               ))}
-              <div className="px-4 pt-2">
-                <Button variant="gradient" size="sm" className="w-full" asChild>
-                  <a href="mailto:ss5630@srmist.edu.in">Contact Me</a>
-                </Button>
-              </div>
             </div>
           </div>
         )}

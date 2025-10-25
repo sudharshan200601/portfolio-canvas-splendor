@@ -1,5 +1,6 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profileImg from "@/assets/profile.jpg";
 
 const Hero = () => {
   return (
@@ -47,12 +48,6 @@ const Hero = () => {
                   LinkedIn
                 </a>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="mailto:ss5630@srmist.edu.in">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Contact
-                </a>
-              </Button>
             </div>
             
             <div className="flex items-center gap-6 pt-4">
@@ -78,18 +73,13 @@ const Hero = () => {
               {/* Glowing background effect */}
               <div className="absolute inset-0 gradient-primary rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
               
-              {/* Photo placeholder */}
+              {/* Profile Photo */}
               <div className="relative w-80 h-96 rounded-3xl border-4 border-primary/20 bg-card shadow-glow overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10">
-                  <div className="text-center p-8">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full gradient-primary flex items-center justify-center">
-                      <span className="text-4xl font-bold text-white">SS</span>
-                    </div>
-                    <p className="text-muted-foreground text-sm">
-                      Add your photo here
-                    </p>
-                  </div>
-                </div>
+                <img 
+                  src={profileImg} 
+                  alt="S.M. Sudharshan Profile" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>

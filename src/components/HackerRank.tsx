@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ExternalLink, Code2, Star } from "lucide-react";
 import hackerrank1 from "@/assets/hackerrank-1.jpg";
 import hackerrank2 from "@/assets/hackerrank-2.jpg";
@@ -8,6 +10,8 @@ import hackerrank3 from "@/assets/hackerrank-3.jpg";
 import hackerrank4 from "@/assets/hackerrank-4.jpg";
 
 const HackerRank = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
   const stats = {
     rank: "490,810",
     points: "265/400",
@@ -129,6 +133,7 @@ const HackerRank = () => {
               <Card 
                 key={index} 
                 className="overflow-hidden group cursor-pointer hover:shadow-glow transition-smooth"
+                onClick={() => setSelectedImage(img)}
               >
                 <img 
                   src={img} 
@@ -140,6 +145,18 @@ const HackerRank = () => {
           </div>
         </div>
       </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl">
+          {selectedImage && (
+            <img 
+              src={selectedImage} 
+              alt="Full size screenshot" 
+              className="w-full h-auto rounded-lg"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
